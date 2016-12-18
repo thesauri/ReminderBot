@@ -9,7 +9,7 @@ app.get('/', function (req, res) {
 })
 
 //Webhook
-app.get(`/${TOKEN}`, (req, res) => {
+app.post(`/${TOKEN}`, (req, res) => {
   console.log(req)
   res.send("OK")
 })
