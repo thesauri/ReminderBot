@@ -21,6 +21,7 @@ app.post(`/${TOKEN}`, (req, res) => {
   if (reminder != null) {
     const timeNow = new Date()
     const timeTimer = new Date(timeNow.getYear(), timeNow.getMonth(), timeNow.getDate(), reminder[3], reminder[4])
+    console.log(timeTimer)
     const diff = timeTimer.getTime() - timeNow.getTime()
     const response = {
       method: "sendMessage",
