@@ -15,7 +15,8 @@ app.get("/", (req, res) => {
 app.post(`/${TOKEN}`, (req, res) => {
   const update = req.body
   const text = update.message.text
-  console.log(update)
+  const regex = /(.+?(?=at|in))(\w{2})\s(\d{2}:\d{2})/ //Match some text first at/in 00:00
+  console.log(regex.exec(text))
 
   const response = {
     method: "sendMessage",
