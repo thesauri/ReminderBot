@@ -15,6 +15,7 @@ app.get("/", (req, res) => {
 app.post(`/${TOKEN}`, (req, res) => {
   const update = req.body
   const text = update.message.text
+  console.log(update)
 
   const response = {
     method: "sendMessage",
