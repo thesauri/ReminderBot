@@ -14,8 +14,15 @@ app.get("/", (req, res) => {
 //Webhook
 app.post(`/${TOKEN}`, (req, res) => {
   const update = req.body
-  console.log(update.message.text)
-  res.send("OK")
+  const text = update.message.text
+
+  const response = {
+    method: "sendMessage",
+    chat_id: update.message.chat.id,
+    text: "Hej!"
+  }
+
+  res.send(response)
 })
 
 app.listen(PORT)
