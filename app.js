@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
 
 //Webhook
 app.post(`/${TOKEN}`, (req, res) => {
-  console.log(req)
+  console.log(req.body)
   res.send("OK")
 })
 
@@ -26,5 +26,5 @@ const options = {
 }
 
 request(options, (error, response, body) => {
-  console.log(response)
+  console.log(body)
 })
