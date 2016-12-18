@@ -19,11 +19,13 @@ app.post(`/${TOKEN}`, (req, res) => {
   const reminder = regex.exec(text)
 
   if (reminder != null) {
-    const time = new Date()
+    const timeNow = new Date()
+    const timeTimer = new Date(timeNow.getYear(), timeNow.getMonth(), timeNow.getDate(), reminder[3], reminder[4])
+    const diff = timeTimer.getTime() - timeNow.getTime()
     const response = {
       method: "sendMessage",
       chat_id: update.message.chat.id,
-      text: `Setting reminder ${reminder[1]} ${reminder[2]} ${reminder[3]}, currently ${time.getHours()}:${time.getMinutes()}`
+      text: `Setting reminder ${reminder[1]} ${reminder[2]} ${reminder[3]}, sending in ${diff / 1000 / 60} minutes`
     }
 
     res.send(response)
