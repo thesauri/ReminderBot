@@ -8,17 +8,20 @@ app.get('/', function (req, res) {
   res.send('Hello World')
 })
 
+//Webhook
 app.get(`/${TOKEN}`, (req, res) => {
   console.log(req)
+  res.send("OK")
 })
 
 app.listen(PORT)
 console.log(`Listening on ${PORT}`)
 
+//Set up the webhook
 const options = {
   url: `https://api.telegram.org/bot${TOKEN}/setWebhook`,
-  headers: {
-    "url": `https://bobthereminderbot.herokuapp.com/${TOKEN}`
+  qs: {
+    url: `https://bobthereminderbot.herokuapp.com/${TOKEN}`
   }
 }
 
