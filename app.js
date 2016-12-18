@@ -13,7 +13,8 @@ app.get("/", (req, res) => {
 
 //Webhook
 app.post(`/${TOKEN}`, (req, res) => {
-  console.log(req.body)
+  const update = req.body
+  console.log(update.message.text)
   res.send("OK")
 })
 
