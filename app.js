@@ -16,15 +16,21 @@ app.post(`/${TOKEN}`, (req, res) => {
   const update = req.body
   const text = update.message.text
   const regex = /(.+?(?=at|in))(\w{2})\s(\d{2}:\d{2})/ //Match some text first at/in 00:00
-  console.log(regex.exec(text))
+  const reminder = regex.exec(text)
 
-  const response = {
-    method: "sendMessage",
-    chat_id: update.message.chat.id,
-    text: "Hej!"
+  if (reminder != null) {
+    const reminderText = reminder[]
+    const response = {
+      method: "sendMessage",
+      chat_id: update.message.chat.id,
+      text: `Setting reminder ${reminder[1]} ${reminder[2]} ${reminder[3]}`
+    }
+
+    res.send(response)
+  } else {
+    res.send("OK")
   }
 
-  res.send(response)
 })
 
 app.listen(PORT)
