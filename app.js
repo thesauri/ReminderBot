@@ -19,7 +19,6 @@ app.post(`/${TOKEN}`, (req, res) => {
   const reminder = regex.exec(text)
 
   if (reminder != null) {
-    const reminderText = reminder[]
     const response = {
       method: "sendMessage",
       chat_id: update.message.chat.id,
