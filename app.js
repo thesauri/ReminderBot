@@ -1,8 +1,11 @@
 const express = require("express")
 const request = require("request")
+const bodyParser = require("body-parser")
 const app = express()
 const PORT = process.env.PORT || 5000
 const TOKEN = process.env.TOKEN
+
+app.use(bodyParser.json())
 
 app.get("/", (req, res) => {
   res.send('Hello World')
