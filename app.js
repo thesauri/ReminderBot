@@ -27,7 +27,7 @@ app.post(`/${TOKEN}`, (req, res) => {
     const response = {
       method: "sendMessage",
       chat_id: update.message.chat.id,
-      text: `Setting reminder ${reminder[1]} ${reminder[2]} ${reminder[3]}, sending in ${diff / 1000 / 60} minutes`
+      text: `Setting reminder ${reminder[1]} ${reminder[2]} ${reminder[3]}:${reminder[4]}, sending in ${diff / 1000 / 60} minutes`
     }
 
     res.send(response)
