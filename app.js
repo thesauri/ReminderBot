@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 app.post(`/${TOKEN}`, (req, res) => {
   const update = req.body
   const text = update.message.text
-  const regex = /(.+?(?=at|in))(\w{2})\s([0-2][0-9]:[0-5][0-9])/ //Match some text first at/in 00:00
+  const regex = /(.+?(?=at|in))(\w{2})\s([0-2][0-9]):([0-5][0-9])/ //Match some text first at/in 00:00
   const reminder = regex.exec(text)
 
   if (reminder != null) {
