@@ -21,21 +21,35 @@ app.post(`/${TOKEN}`, (req, res) => {
   if (reminder != null) {
     const timeNow = new Date()
     const timeTimer = new Date(timeNow.getFullYear(), timeNow.getMonth(), timeNow.getDate(), reminder[3], reminder[4])
-    console.log(reminder)
-    console.log(timeTimer)
     const diff = timeTimer.getTime() - timeNow.getTime()
     const response = {
       method: "sendMessage",
       chat_id: update.message.chat.id,
-      text: `Setting reminder ${reminder[1]} ${reminder[2]} ${reminder[3]}:${reminder[4]}, sending in ${diff / 1000 / 60} minutes`
+      text: `Setting reminder ${reminder[1]} ${reminder[2]} ${reminder[3]}:${reminder[4]}, sending in approximately ${Math.ceil(diff / 1000 / 60)} minutes`
     }
-
+    scheduleMessage(diff, update.message.chat.id, reminder[1])
     res.send(response)
   } else {
     res.send("OK")
   }
 
 })
+
+//Schedules a message for sending
+scheduleMessage(delay, chatId, text) {
+  setTimeout(() => {
+    const options = {
+      url: `https://api.telegram.org/bot${TOKEN}/setWebhook`,
+      qs: {
+        chat_id: chatId,
+        text: text
+      }
+    }
+    request(options, (error, response, body) => {
+      console.log(body)
+    })
+  }, delay)
+}
 
 app.listen(PORT)
 console.log(`Listening on ${PORT}`)
