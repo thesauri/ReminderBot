@@ -20,7 +20,7 @@ app.post(`/${TOKEN}`, (req, res) => {
 
   if (reminder != null) {
     const timeNow = new Date()
-    const timeTimer = new Date(timeNow.getFullYear(), timeNow.getMonth() - 1, timeNow.getDate(), reminder[3], reminder[4])
+    const timeTimer = new Date(timeNow.getFullYear(), timeNow.getMonth(), timeNow.getDate(), reminder[3], reminder[4])
     console.log(reminder)
     console.log(timeTimer)
     const diff = timeTimer.getTime() - timeNow.getTime()
