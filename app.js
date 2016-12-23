@@ -36,7 +36,7 @@ app.post(`/${TOKEN}`, (req, res) => {
 })
 
 //Schedules a message for sending
-scheduleMessage(delay, chatId, text) {
+const scheduleMessage = (delay, chatId, text) => {
   setTimeout(() => {
     const options = {
       url: `https://api.telegram.org/bot${TOKEN}/setWebhook`,
